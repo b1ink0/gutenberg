@@ -292,6 +292,14 @@ function getWebpackEntryPoints( buildType ) {
 				}
 
 				for ( const value of Object.values( fields ).flat() ) {
+					if ( typeof value === 'object' ) {
+						if ( value?.file !== undefined ) {
+							value = value.file;
+						} else {
+							continue;
+						}
+					} 
+
 					if ( ! value.startsWith( 'file:' ) ) {
 						continue;
 					}

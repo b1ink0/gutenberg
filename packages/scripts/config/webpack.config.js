@@ -333,6 +333,9 @@ const scriptConfig = {
 					noErrorOnMissing: true,
 					transform( content, absoluteFrom ) {
 						const convertExtension = ( path ) => {
+							if ( typeof path === 'object' ) {
+								return path;
+							}
 							return path.replace( /\.m?(j|t)sx?$/, '.js' );
 						};
 
